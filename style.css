@@ -1,3 +1,9 @@
+:root {
+    --dark-color:  rgb(37, 37, 37);
+    --light-color: rgb(255, 255, 255);
+}
+
+/* reset */
 * {
     padding: 0;
     margin: 0;
@@ -9,8 +15,30 @@ body {
     overflow-x: hidden;
 }
 
+a {
+    display: block;
+}
+
+img {
+    width: 100%;
+    height: 100%;
+}
+
+/* header */
+header {
+    background-color: var(--dark-color);
+    position: relative;
+}
+
+ h1, h3 {
+    padding: 2rem;
+    text-align: center;
+    color: var(--light-color);
+ }
+
+/* main */
 .bg-container {
-    background-color: #fff;
+    background-color: var(--light-color);
     position: relative;
 }
 
@@ -26,37 +54,35 @@ body {
     opacity: 0.8;
 }
 
-.grid-container * {
+.grid-container > * {
     z-index: 1;
 }
-
-img {
-    width: 100%;
-    height: 100%;
-}
-
-header {
-    background-color: rgb(37, 37, 37);
-    position: relative;
-}
-
- h1, h3 {
-    padding: 2rem;
-    text-align: center;
-    color: #fff;
- }
 
 .grid-container {
     z-index: 2;
     padding: 1rem;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 1rem;
-    grid-template-rows: repeat(auto-fill, 400px);
+    gap: 3rem;
+    grid-template-rows: repeat(auto-fill, 450px);
 }
 
 .site-card:hover {
     transform: scale(1.05);
     z-index: 2;
     transition: 0.3s ease-in-out;
+}
+
+/* Mobile */
+@media(max-width: 762px) {
+    h1, h3 {
+        padding: 1rem;
+     }
+    
+
+    .grid-container {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+        grid-template-rows: auto;
+    }
 }
