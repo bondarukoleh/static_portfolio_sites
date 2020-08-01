@@ -1,6 +1,7 @@
 :root {
-  --dark-color: rgb(37, 37, 37);
-  --light-color: rgb(255, 255, 255);
+  --dark-color: #333;
+  --grey-color: #cfcfcf;
+  --light-color: #fff;
 }
 
 /* reset */
@@ -21,16 +22,14 @@ a {
 
 img {
   width: 100%;
-  height: 100%;
 }
 
 /* header */
 header {
   background-color: var(--dark-color);
-  position: relative;
 }
 
-h1, h3 {
+h3, h1 {
   padding: 2rem;
   text-align: center;
   color: var(--light-color);
@@ -42,42 +41,62 @@ h1, h3 {
   position: relative;
 }
 
-.bg-container::before {
-  position: absolute;
-  content: '';
-  background: url('./img/back.jpg') no-repeat center center/cover;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 0;
-  opacity: 0.8;
-}
-
-.grid-container > * {
-  z-index: 1;
-}
-
 .grid-container {
   padding: 1rem;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 28rem);
+  justify-content: center;
+  align-items: center;
   gap: 2rem;
-  grid-template-rows: repeat(auto-fill, 450px);
 }
 
 .site-card {
   position: relative;
   overflow: hidden;
+  justify-self: center;
+  align-self: center;
+}
+
+.site-card img {
+  width: 45rem;
+  height: 25rem;
+}
+
+.site-card a {
+  position: relative;
 }
 
 .site-card:hover img {
   transform: scale(1.05);
-  transition: 0.3s ease-in-out;
+  transition: 0.4s ease-in-out;
 }
 
-/* Mobile */
-@media (max-width: 762px) {
+.site-header {
+  position: absolute;
+  top: 0;
+  text-align: center;
+  width: 100%;
+  height: 30%;
+  background: rgba(221, 221, 221, 0.5);
+  z-index: 1;
+
+  transition: .6s ease-in-out;
+  transform: translateY(-300px);
+  visibility: hidden;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.site-card:hover .site-header {
+  transform: translateY(0);
+  visibility: visible;
+}
+
+/* Small screens */
+@media (max-width: 1450px) {
   h1, h3 {
       padding: 1rem;
   }
@@ -85,6 +104,11 @@ h1, h3 {
   .grid-container {
     grid-template-columns: 1fr;
     gap: 1rem;
-    grid-template-rows: auto;
+    grid-template-rows: 1fr;
+  }
+
+  .site-card img {
+    width: 100%;
+    height: 100%;
   }
 }
